@@ -1,0 +1,55 @@
+# Salin ke config.toml lalu sesuaikan.
+
+[bot]
+nick = "CoVID"
+alt_nick = "CoVID_"
+user = "covid"
+realname = "!cVd!"
+umode = "+xiB-ws"
+channels = ["#covid"]
+admins = ["iJoo"]              # nick penerima notifikasi lag/netsplit/reconnect
+nickpass = ""                  # password NickServ; kosong = tidak identify
+# nickserv = "NickServ@services.dal.net"   # default "NickServ"; pakai ini di DALnet
+# File ini menyimpan password: jalankan chmod 600 config.toml
+
+# Owner pertama: kirim /msg <bot> <owner_key> dari nick ini, lalu setpass.
+# Kata kunci berhenti berlaku begitu owner dibuat. Setelah itu baris owner dan
+# owner_key boleh dihapus, tapi harus keduanya sekaligus.
+owner = "iJoo"
+owner_key = ""                 # minimal 12 karakter, buat yang acak
+# data_dir = "data"   # channels.json, kickcount, ignores.json, badwords.db, settings.json
+# users_file = "data/users.json"   # lupa password: run.py --add-owner <handle>
+
+# Dicoba bergantian saat reconnect; boleh lebih dari satu.
+[[servers]]
+host = "irc.dal.net"
+port = 6697
+tls = true
+# tls_verify = false           # untuk server dengan sertifikat self-signed
+# password = ""                # PASS server, kalau ada
+
+[timing]                       # semua dalam detik
+ping_interval = 60             # jarak antar PING dari bot
+lag_warn = 10                  # batas lag untuk memberi tahu admin
+stoned_timeout = 180           # tanpa PONG selama ini = server stoned
+split_timeout = 600            # nick yang split dan tak kembali dianggap quit
+reconnect_min = 15             # jeda awal reconnect
+reconnect_max = 300            # jeda terlama reconnect
+
+[guard]                        # semua opsional; ini nilai bawaan
+flood_chan = "10:60"           # jumlah:detik per host, hukuman kick
+flood_join = "5:60"            # hukuman ban host + kick
+flood_ctcp = "3:60"
+flood_kick = "3:10"
+flood_deop = "3:10"
+flood_nick = "5:60"
+ban_time = 120                 # menit, ban join flood dicabut otomatis
+rejoin_delay = 10              # jeda rejoin setelah kena kick
+rejoin_max = 3                 # maksimal kick dalam rejoin_window
+rejoin_window = 60
+rejoin_cooldown = 300          # berhenti rejoin selama ini kalau kelewat batas
+automod_max = 10               # join dalam automod_window sampai channel +m
+automod_window = 8
+automod_duration = 60
+op_grace = 30                  # guard mati kalau op tidak didapat selama ini
+opcmd = "PRIVMSG ChanServ :op %c% %n%"
